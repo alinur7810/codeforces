@@ -18,43 +18,45 @@ bool fast(int n, vi a, vi b){
     return is;
 }
 
+
+
 void solve() {  
-    int n; cin >> n;
+    int n; cin >> n; int blyatnadoelo = 0;
     vi a(n); vi b(n);
-    int sum = 0;
     for (auto &i : a){
-        cin >> i; sum += i;
+        cin >> i;
     }
     for (auto &i : b){
         cin >> i;
+        blyatnadoelo += i;
     }
     bool iss = fast(n, a, b);
     if (iss){
         cout << 0 << '\n';
         return;
     }
-    
-    bool one = true; 
+    bool one = false;
+    bool poss = false;
+    bool heregoznaet = false;
+    int c=0; int sum = 0;
     for (int i=0; i<n; ++i){
-        if (1-a[i] != b[i]) one = false;
-    }
-    if (one && sum % 2 !=0){
-        cout << 1 << '\n';
-        return;
+        if (a[i]==1) poss = true;
+        if ( 1-a[i] == b[i] ){
+            one = true;
+            sum += a[i];
+        }
     }
 
-    int za = 0, zb=0;
-    for (int i=0; i<n; ++i){
-        if ( a[i] == 0 ) za++;
-        if ( b[i] == 0 ) zb++;
-    }
-    if (zb < za){
+    if (!(poss) || blyatnadoelo == n){
         cout << -1;
     }
-    else{
+    else if ( sum%2 != 0 ){
+        cout << 1;
+    }else{
         cout << 2;
     }
     cout << '\n';
+    
 
 }
 

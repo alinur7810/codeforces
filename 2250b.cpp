@@ -12,68 +12,30 @@ using pii = pair<ll, ll>;
 
 void solve() {  
     int n, k; cin >> n >> k;
+
     if (n-k < 2){
         cout << -1 << '\n';
         return;
     }
-    string s = "";
-    if (k==0){
-        s+= '1';
-        for (int i=0; i<n-1; ++i){
-            s+= ( s.back()=='1' ? '0' : '1' );
-        }
-        cout << s <<'\n';
-    }
-    else if (k%2==0 && k == n/2){
-        for (int i=0; i<k; ++i){
-            s += (i%2 == 0 ? "11" : "00");
-        }
-        cout << s<<'\n';
-    }
-    else if (k <= n/2){
-        if (k==1) s+='0';
-        else{
-            for (int i=0; i<k; ++i){
-            s += (i%2 == 0 ? "11" : "00");
-
-        }
-        int tt = n-s.size();
-        tt = max(0, (int)(n - s.size()));
-        while (tt--){
-            s.push_back( (s.back() =='1' ? '0' : '1' ) );
-        }
-        cout << s << '\n';
-        }
-        
-    }
-    else{
-        if (k%2 == 0){
-            for (int i=0; i<k/2+1; ++i){
-                s+='1';
+    int b = n-k;
+    int o=(n+1)/2, z=n/2;
+    int co =(b+1)/2, cz = (b)/2;
+    for (int i=0; i<b; ++i){
+        if (i%2==0){
+            if (co == 1){
+                while(o--) cout << 1;
+            }else{
+                cout << 1; o--; co--;
             }
-            for (int i=0; i<k/2+1; ++i){
-                s+='0';
+        }else{
+            if (cz > 1){
+                cout << 0; z--; cz--;
+            }else{
+                while (z--) cout << 0;
             }
-            int ost = n-s.size();
-            while (ost--){
-                s.push_back( (s.back() =='1' ? '0' : '1' ) );
-            }
-            cout << s << '\n';
-        }
-        else{
-            for (int i=0; i<k/2+2; ++i){
-                s += '1';
-            }
-            for (int i=0; i<k/2+1; ++i){
-                s +='0';
-            }
-            int ost = n-s.size();
-            while (ost--){
-                s.push_back( (s.back() =='1' ? '0' : '1' ) );
-            }
-            cout << s << '\n';
         }
     }
+    cout << '\n';
 }
 
 int main() {

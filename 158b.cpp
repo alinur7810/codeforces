@@ -12,28 +12,29 @@ using pii = pair<ll, ll>;
 
 void solve() {  
     int n; cin >> n;
-    vi v(n);
-    for (auto &i : v){
-        cin >> i;
+    vi v(5);
+    for (int i=0; i<n; ++i){
+        int x; cin >> x;
+        v[x]++;
     }
-    sort(all(v));
-    int ans = 0;
-    int i=0, j=n-1;
-    int cap = 0;
 
-    while (i < j){
-        if (v[j] == 4){
-            j--;
-        }
+    int ans=0;
+    ans += v[4];
+
+    ans += v[3];
+    v[1]=max(0, v[1]-v[3]);
+
+    ans += v[2]/2;
+    if (v[2] % 2 != 0){
+        ++ans;
+        v[1] = max(0, v[1]-2);
     }
-    vi a;
-    while(i<j){
-        if (v[i]+v[j] <= 4){
-            a.push_back(v[i]+v[j]);
-        }
-        
+    if (v[1]>0){
+        ans += (v[1]+3)/4;
     }
-    cout << ans;
+    
+
+    cout << ans;    
 }
 int main() {
     #ifndef ONLINE_JUDGE

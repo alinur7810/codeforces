@@ -1,3 +1,3 @@
-s ="euioay"
-for x in s:
-    print(f"c=='{x}' ||", end='')
+y=int(input())
+sY = y*365*24*60*60
+print(sY)

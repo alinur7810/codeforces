@@ -12,6 +12,12 @@ using pii = pair<ll, ll>;
 #define nl '\n'
 
 void solve() {  
+    ll n; cin >> n;
+    ll ans = 0;
+    for (int i=1; i<=n; ++i){
+        ans += ((n/i)*(n/i));
+    }
+    cout << ans << '\n';
     
 }
 

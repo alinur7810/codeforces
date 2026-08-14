@@ -10,6 +10,9 @@ using pii = pair<ll, ll>;
 #define pb push_back
 #define sz(x) (int)(x).size()
 #define nl '\n'
+#define nah cout << "NO\n"
+#define yeah cout << "YES\n"
+#define lol cout << '\n'
 
 void solve() {  
     

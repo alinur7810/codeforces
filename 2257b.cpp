@@ -24,33 +24,22 @@ void solve() {
     for (auto &i : b){
         cin >> i;
     }
-    int N=0, M=0;
-    bool over = false;
-    bool move = true;
-    int winner;
-    while(!(over)){
-        if (move){
-            b[M]--;
-            if (M == m-1 && b[M]==0){
-                over = true;
-                winner = 1;
-            }else if (b[M]==0 || M+1 < m && b[M] < b[M+1]){
-                M++;
-            }
-            move = false;
-        }
-        else{
-            a[N]--;
-            if (N == n-1 && a[N]==0){
-                over = true;
-                winner = 2;
-            }else if (a[N]==0 || N + 1 < n && (a[N] < a[N+1])){
-                N++;
-            }
-            move = true;
+    int N = 0, M=0;
+    for (int i=0; i<n-1; ++i){
+        if (a[i] >= a[i+1]){
+            N += a[i]-a[i+1]+1;
         }
     }
-    cout << winner << nl;
+    for (int i=0; i<m-1; ++i){
+        if (b[i] >= b[i+1]){
+            M += b[i]-b[i+1]+1;
+        }
+    }
+    N += a.back();
+    M += b.back();
+    // cout << N << ' ' << M;
+    cout << ( (N==M || N>M) ? 1 : 2 );
+    lol;
 }
 
 int main() {

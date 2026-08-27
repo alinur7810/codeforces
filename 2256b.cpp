@@ -14,127 +14,36 @@ using pii = pair<ll, ll>;
 #define yeah cout << "YES\n"
 #define lol cout << '\n'
 
-bool one(string s){
-    bool pos=true;
-    bool sw = true;
-    bool o, t, th, f;
-    for (int i=0; i<sz(s)-1; i+=2){
-       if (sw){
-        o = ((s[i]=='0' || s[i]=='?'));
-        t = (s[i+1]=='0' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = false;
-       }
-       else{
-        o = ((s[i]=='1' || s[i]=='?'));
-        t = (s[i+1]=='1' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = true;
-       }
-    }
-    return pos;
-}
-bool two(string s){
-    bool pos=true;
-    bool sw=true;
-    bool o, t, th, f;
-    for (int i=0; i<sz(s)-1; i+=2){
-        if (sw){
-        o = ((s[i]=='1' || s[i]=='?'));
-        t = (s[i+1]=='1' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = false;
-       }
-       else{
-        o = ((s[i]=='0' || s[i]=='?'));
-        t = (s[i+1]=='0' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = true;
-       }
-    }
-    return pos;
-}
-bool three(string s){
-    bool pos=true;
-    bool sw = true;
-    bool o, t, th, f;
-    if (s[0] != '0'){
-        pos = false;
-    }
-    for (int i=1; i<sz(s)-1; i+=2){
-        if (sw){
-        o = ((s[i]=='1' || s[i]=='?'));
-        t = (s[i+1]=='1' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = false;
-       }
-       else{
-        o = ((s[i]=='0' || s[i]=='?'));
-        t = (s[i+1]=='0' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = true;
-       }
-    }
-    return pos;
-}
-bool four(string s){
-    bool pos=true;
-    bool sw=true;
-    bool o, t, th, f;
-    if (s[0] != '1'){
-        pos = false;
-    }
-    for (int i=1; i<sz(s)-1; i+=2){
-        if (sw){
-        o = ((s[i]=='0' || s[i]=='?'));
-        t = (s[i+1]=='0' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = false;
-       }
-       else{
-        o = ((s[i]=='1' || s[i]=='?'));
-        t = (s[i+1]=='1' || s[i+1]=='?');
-        if (!(o && t)){
-            pos = false;
-        }
-        sw = true;
-       }
-    }
-    return pos;
-}
-
-
 void solve() {  
     int n; cin >> n;
+    string a="", b="", c="1", d="0";
     string s; cin >> s;
-    int ans = 0;
-    if (sz(s)==2){
-        if (s=="??") ans = 4;
-        else ans = 2;
+    bool sw=true;
+    int cnt=0;
+    for (int i=0; i<n; ++i){
+        if (i%4==0 || i%4==1){
+            a+='0'; b+='1';
+        }
+        else if (i%4==2 || i%4==3){
+            a+='1'; b+='0';
+        }
     }
-    else if (sz(s) > 4){
-        if (one(s)) ans++;
-        if (two(s)) ans++;
-        if (three(s)) ans++;
-        if(four(s)) ans++;
+    for (int i=0; i<n-1; ++i){
+        if (i%4==0 || i%4==1){
+            c+='0'; d+='1';
+        }
+        else if (i%4==2 || i%4==3){
+            c+='1'; d+='0';
+        }
     }
-    
-    cout << ans;
-    lol;
+    int q=1,w=1,e=1,r=1;
+    for (int i=0; i<n; ++i){
+        if (s[i] != a[i] && s[i]!='?') q=0;
+        if (s[i] != b[i] && s[i]!='?') w=0;
+        if (s[i] != c[i] && s[i]!='?') e=0;
+        if (s[i] != d[i] && s[i]!='?') r=0;
+    }
+    cout << q+w+e+r; lol;
 }
 
 int main() {

@@ -35,7 +35,7 @@ void solve() {
             j++;
         }
         y=a[j];
-        iss.push_back(true)
+        iss.push_back(true);
         k++;
         ++i; ++j;
     }

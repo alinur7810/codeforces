@@ -15,7 +15,30 @@ using pii = pair<ll, ll>;
 #define lol cout << '\n'
 
 void solve() {  
-    
+    string s; cin >> s;
+    string ss = "";
+    for (int i=0; i<sz(s); ++i){
+        if (s[i] == 'W' && s[i+1] == 'U' && s[i+2] == 'B'){
+            s[i] = ' ';
+            s.erase(i+1, 2);
+        }
+    }
+    bool space = false;
+    for (int i=0; i<sz(s); ++i){
+        if (s[i] != ' '){
+            space = false;
+            ss+=s[i];
+
+        }
+        else{
+            if (!space){
+                ss+=' ';
+                space = true;
+            }
+        }
+    }
+    if (s[0] == ' ') ss.erase(0, 1);
+    cout << ss;
 }
 
 int main() {
@@ -27,7 +50,7 @@ int main() {
     cin.tie(0);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--) {
         solve();
     }

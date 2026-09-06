@@ -15,7 +15,25 @@ using pii = pair<ll, ll>;
 #define lol cout << '\n'
 
 void solve() {  
-    
+    int n, k; cin >> n >> k;
+    string s; cin >> s;
+    int ans = 0;
+    int i=0;
+    while (i<n){
+        bool found = false;
+        for (int j=0; j<k; ++j){
+            if (s[i]=='0'){
+                found = true;
+            }
+            ++i;
+            
+        }
+        if (!found) ans++;
+        found = false;
+    }
+    cout << ans;
+    lol;
+
 }
 
 int main() {

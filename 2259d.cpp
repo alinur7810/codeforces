@@ -23,20 +23,30 @@ void solve() {
         if (i==0) z++;
         else nz++;
     }
-    if (z>0){
-        if (z>=nz){
+    if (z==0){
         yeah;
         for (int i=0; i<n; ++i){
             cout << 'A';
         }
         lol;
-    }else{
+    }
+    else if (z==1){
         nah;
     }
-    }else{
+    else{
+        bool a=false, b=false;
         yeah;
         for (int i=0; i<n; ++i){
-            cout << 'A';
+            if (v[i]==0){
+                if (!a){
+                    cout << 'A';
+                    a=true;
+                }else{
+                    cout << 'B';
+                }
+            }else {
+                cout << 'C';
+            }
         }
         lol;
     }

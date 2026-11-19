@@ -1,3 +1,3 @@
-y=int(input())
-sY = y*365*24*60*60
-print(sY)
+s = "n, k, l, c, d, p, nl, np"
+ss = s.replace(",", " >>")
+print(ss)
